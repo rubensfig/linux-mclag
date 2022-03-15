@@ -10,7 +10,7 @@ ip link set dev bridge up
 
 # peerlink
 teamd -t peerlink -d -c '{"runner": {"name": "lacp"}}'
-ip link set dev swp16 master peerlink
+ip link set dev eno3 master peerlink
 ip link set dev peerlink master bridge
 ip link set dev peerlink up
 ip link add link peerlink name peerlink.4094 up type vlan id 4000
@@ -18,17 +18,10 @@ ip addr add 169.254.1.1/30 dev peerlink.4094
 
 # server1
 teamd -t server1 -d -c '{"runner": {"name": "lacp", "hwaddr_policy":"no_change", "system_id":"44:38:39:ff:00:01"}}'
-ip link set dev swp1 master server1
+ip link set dev eno4 master server1
 sleep 1
 ip link set dev server1 master bridge
 ip link set dev server1 up
-
-# server2
-teamd -t server2 -d -c '{"runner": {"name": "lacp", "hwaddr_policy":"no_change", "system_id":"44:38:39:ff:00:02"}}'
-ip link set dev swp2 master server2
-sleep 1
-ip link set dev server2 master bridge
-ip link set dev server2 up
 
 # SVI
 ip address add 10.1.1.254/24 dev bridge

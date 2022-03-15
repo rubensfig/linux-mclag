@@ -1,7 +1,7 @@
 LIBNL_CFLAGS = -I/usr/include/libnl3 
 LIBNL_LIBS = -lnl-cli-3 -lnl-genl-3 -lnl-nf-3 -lnl-route-3 -lnl-3 
 
-CC = gcc
+CC = gcc-4.8
 SOURCES = app_csm.c cmd_option.c iccp_cli.c iccp_cmd_show.c iccp_cmd.c \
 iccp_csm.c iccp_ifm.c iccp_main.c logger.c \
 port.c scheduler.c system.c iccp_consistency_check.c \

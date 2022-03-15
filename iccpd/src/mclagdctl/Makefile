@@ -1,6 +1,6 @@
 
 
-C = gcc
+CC = gcc-4.8
 SOURCES = \
 mclagdctl.c
 
